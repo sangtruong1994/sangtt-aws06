@@ -8,11 +8,11 @@ phases:
     commands:
       - echo "2. Build step"
       - docker build -f ./deploy-helper/nginx/Dockerfile.nginx -t nginx .
-      - docker build -f Dockerfile -t php-fpm .
+      - docker build -f Dockerfile -t sangtt/taa-php-fpm .
   post_build:
     commands:
       - echo 3. "Post build"
-      - docker tag nginx:latest 666402361323.dkr.ecr.ap-southeast-1.amazonaws.com/nginx:latest
+      - docker tag sangtt/taa-nginx:latest 666402361323.dkr.ecr.ap-southeast-1.amazonaws.com/nginx:latest
       - docker push 666402361323.dkr.ecr.ap-southeast-1.amazonaws.com/nginx:latest
       - docker tag sangtt/taa-php-fpm:latest 975049904898.dkr.ecr.ap-southeast-1.amazonaws.com/sangtt/taa-php-fpm:latest
       - docker push 666402361323.dkr.ecr.ap-southeast-1.amazonaws.com/php-fpm:latest
